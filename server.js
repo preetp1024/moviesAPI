@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    app.listen(port, '0.0.0.0', ()=>{
+    app.listen(port, ()=>{
         console.log(`server listening on: ${port}`);
     });
 }).catch((err)=>{
