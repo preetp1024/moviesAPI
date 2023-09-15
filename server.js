@@ -10,13 +10,13 @@ const router = express.Router();
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
 
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    app.listen(port, ()=>{
+    app.listen(port, '0.0.0.0', ()=>{
         console.log(`server listening on: ${port}`);
     });
 }).catch((err)=>{
