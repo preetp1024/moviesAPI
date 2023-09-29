@@ -13,6 +13,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
@@ -34,7 +35,7 @@ db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
 });
 
 app.get('/', (req, res) => {
-  res.json({ message: "API Listening" });
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/api/movies', async (req, res) => {
